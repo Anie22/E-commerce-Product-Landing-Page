@@ -575,6 +575,9 @@ body {
   }
 }
 @media screen and (max-width: 375px) {
+  .header .header-content {
+    gap: 25px;
+  }
   .header .header-content .nav .nav-links {
     width: 375px;
   }
@@ -595,7 +598,7 @@ body {
     gap: 100px;
   }
   .attribution {
-    font-size: 20px;
+    font-size: 19px;
   }
 }
 @media screen and (max-width: 320px) {
