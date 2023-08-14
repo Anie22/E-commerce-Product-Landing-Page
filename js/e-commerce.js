@@ -197,7 +197,7 @@ function updateCheckoutButton() {
 }
 
 function onBtnDeleteClick() {
-    productsInCart--;
+    productsInCart = "";
     updateCart();
 
     const el = document.querySelector('.countbtn');
