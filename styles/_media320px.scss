@@ -1,0 +1,74 @@
+@media screen and (max-width: 320px) {
+    .header{
+
+        .header-content{
+            gap: 11px;
+
+            .nav{
+
+                .nav-links{
+                    width: 322px;
+                }
+            }
+
+            .cart{
+                margin-left: 29px;
+            }
+
+            .cart-content{
+                right: 12px;
+
+                .products-in-cart{
+
+                    .item{
+                        gap: 12px;
+
+                        .product-img{
+                            width: 3.2em;
+                        }
+
+                        .details{
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .container{
+        .product{
+    
+            .product-title{
+                font-size: 26.2px;
+            }
+    
+            .description{
+                font-size: 12.1px;
+            }
+    
+            .pg-btn-holder{
+                margin-top: 52px;
+
+                .count{
+                    gap: 71px;
+                }
+
+                .add{
+
+                    img{
+                        height: 22px;
+                    }
+
+                    p{
+                        font-size: 19px;
+                    }
+                }
+            }
+        }
+    }
+   
+    .attribution{
+        font-size: 19px;
+    }
+}

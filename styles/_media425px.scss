@@ -1,0 +1,83 @@
+@media screen and (max-width: 425px) {
+    .header{
+
+        .header-content{
+
+            .nav{
+
+                .nav-links{
+                    width: 425px;
+                }
+            }
+
+            .cart{
+                margin-left: 89px;
+            }
+
+            .cart-content{
+                right: 19px;
+                border-radius: 7px;
+
+                .products-in-cart{
+
+                    .item{
+    
+                        .details{
+                            font-size: 18px;
+    
+                            .price-group{
+    
+                                .total-amount {
+                                    font-size: 1.2em;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .container{
+        .product{
+
+            .company-name{
+                font-size: 1.1em;
+            }
+    
+            .product-title{
+                font-size: 2em;
+            }
+    
+            .description{
+                font-size: 1.01rem;
+            }
+    
+            .pg-price-holder{
+    
+                .price{
+    
+                    .pg-h5{
+                        font-size: 22px;
+                    }
+    
+                    del{
+                        font-size: 14px;
+                    }
+                }
+            }
+    
+            .pg-btn-holder{
+    
+                .count{
+                    gap: 121px;
+                }
+            }
+        }
+    }
+   
+    .attribution{
+        font-size: 19px;
+        line-height: 196%;
+    }
+}

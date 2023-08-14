@@ -1,0 +1,56 @@
+@media screen and (max-width: 375px) {
+    .header{
+
+        .header-content{
+
+            .nav{
+
+                .nav-links{
+                    width: 375px;
+                }
+            }
+
+            .cart{
+                margin-left: 39px;
+            }
+
+            .cart-content{
+
+                .products-in-cart{
+
+                    .item{
+
+                        .product-img{
+                            width: 4em;
+                            border-radius: 0.3rem;
+                        }
+    
+                        .details{
+                            font-size: 15px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .container{
+        .product{
+    
+            .description{
+                font-size: 14px;
+            }
+    
+            .pg-btn-holder{
+    
+                .count{
+                    gap: 100px;
+                }
+            }
+        }
+    }
+   
+    .attribution{
+        font-size: 20px;
+    }
+}

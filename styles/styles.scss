@@ -12,11 +12,18 @@ $dark-grayish-blue: hsl(219, 9%, 45%);
 $grayish-blue: hsl(220, 14%, 75%);
 $light-grayish-blue: hsl(223, 64%, 98%);
 $white: hsl(0, 0%, 100%);
-$black: hsla(0, 0%, 0%, 0.75); //(with 75% opacity for lightbox background)
+$black: hsla(0, 0%, 0%);
+$black-opacity: hsla(0, 0%, 0%, 0.75); //(with 75% opacity for lightbox background)
 
 @import "general";
 @import "header";
+@import "container";
 @import "lightbox";
 @import "product";
-@import "media1440px";
-@import "overlay";
+@import "details";
+@import "attribution";
+@import "media1024px";
+@import "media900px";
+@import "media425px";
+@import "media375px";
+@import "media320px";

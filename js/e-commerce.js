@@ -1,97 +1,98 @@
-const menu = document.querySelector('.menu');
-const btnHamburger = document.querySelector('.hamburger');
-const btnMenuClose = document.querySelector('#btnMenuClose');
-
-const cart = document.querySelector('.cart');
-const btnCart = document.querySelector('.btnCart');
-
-const btnPlus = document.querySelector('#btnPlus');
-const btnMinus = document.querySelector('#btnMinus');
-const productCounter = document.querySelector('.counter');
-
-const gallery = document.querySelectorAll('.pic');
-const heroImg = document.querySelector('.product-hero');
-
+const close = document.querySelector('.close');
+const nav = document.querySelector('.nav-links');
+const gallery = document.querySelectorAll('.images');
 const btnNext = document.querySelector('.next');
 const btnPrevious = document.querySelector('.previous');
-
-const btnAddToCard = document.querySelector('.btn');
+const heroImg = document.querySelector('.product-image');
+const btnAddToCard = document.querySelector('.add');
 const cartCount = document.querySelector('.cart-count');
-const productInShoppingCart = document.querySelector('.products-in-cart');
-
 const msgEmpty = document.querySelector('.msg-empty');
 const checkout = document.querySelector('.checkout');
+const productInShoppingCart = document.querySelector('.products-in-cart');
+const cart = document.querySelector('.cart')
+const cartContent = document.querySelector('.cart-content')
+const menu = document.querySelector('.menu');
 
-const overlay = document.querySelector('.overlay');
-const lightbox = document.querySelector('.lightbox');
+menu.addEventListener('click', menuOpen)
 
-let lightboxGallery;
-let lightboxHero;
+cart.addEventListener('click', openCart);
 
+close.addEventListener('click', menuClose)
 
-//Numerical Variables
-let productCounterValue = 1;
-let productsInCart = 0;
-let price = 250.0
-let discount = 0.5;
+btnNext.addEventListener('click', handleBtnClickNext);
 
+btnPrevious.addEventListener('click', handleBtnClickPrevious);
 
-btnHamburger.addEventListener('click', onHamburgerClick);
-btnMenuClose.addEventListener('click', onBtnMenuCloseClick);
-
-btnCart.addEventListener('click', openCart);
-
-btnPlus.addEventListener('click', productCounterPlus);
-btnMinus.addEventListener('click', productCounterMinus);
+// Open the Modal
+function openModal() {
+    document.getElementById("myModal").style.display = "block";
+  }
+  
+  // Close the Modal
+  function closeModal() {
+    document.getElementById("myModal").style.display = "none";
+  }
+  
+  var slideIndex = 1;
+  showSlides(slideIndex);
+  
+  // Next/previous controls
+  function plusSlides(n) {
+    showSlides(slideIndex += n);
+  }
+  
+  // Thumbnail image controls
+  function currentSlide(n) {
+    showSlides(slideIndex = n);
+  }
+  
+  function showSlides(n) {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("demo");
+    var captionText = document.getElementById("caption");
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+  }
 
 gallery.forEach(img => {
     img.addEventListener('click', onThumbClick);
 });
 
-btnNext.addEventListener('click', handleBtnClickNext);
-btnPrevious.addEventListener('click', handleBtnClickPrevious);
+let productCounterValue = 1;
+let productsInCart = 0;
+let price = 250.0
+let discount = 0.5;
 
 btnAddToCard.addEventListener('click', addToCart);
 
-heroImg.addEventListener('click', onHeroImgClick);
-
-
-
-function onHamburgerClick() {
-    menu.classList.remove('hidden');
+function menuOpen() {
+    nav.style.display = 'block'
 }
 
-function onBtnMenuCloseClick() {
-    menu.classList.add('hidden');
+function menuClose() {
+    nav.style.display = 'none'
 }
 
 function openCart() {
-    cart.classList.toggle('hidden');
+    cartContent.classList.toggle('hidden')
 }
-
-function productCounterPlus() {
-    setProductCounter(1);
-}
-
-function productCounterMinus() {
-    setProductCounter(-1);
-}
-
-function setProductCounter(value) {
-    if ((productCounterValue + value) > 0) {
-        productCounterValue += value;
-        productCounter.innerHTML = productCounterValue;
-    }
-}
-
 
 function onThumbClick(event) {
     //clear active state for all thumbnails
     gallery.forEach(img => {
-        img.classList.remove('active');
+        img.classList.remove('img');
     });
     //set active thumbnail
-    event.target.parentElement.classList.add('active');
+    event.target.parentElement.classList.add('img');
     //update hero image
     heroImg.src = event.target.src.replace('-thumbnail', '');
 }
@@ -115,44 +116,44 @@ function handleBtnClickPrevious() {
 }
 
 function getCurrentImageIndex() {
-    const imageIndex = parseInt(heroImg.src.split('\\').pop().split('/').pop().replace('.jpg', '').replace('image-product-', ''));
+    const imageIndex = parseInt(heroImg.src.split('\\').pop().split('/').pop().replace('.jpg', '').replace('img-product-', ''));
     return imageIndex;
 }
 
 function setHeroImage(imageIndex) {
-    heroImg.src = `./images/image-product-${imageIndex}.jpg`;
+    heroImg.src = `./img/img-product-${imageIndex}.jpg`;
     //images are not sync
     gallery.forEach(img => {
-        img.classList.remove('active');
+        img.classList.remove('img');
     });
-    //set active thumbnail
-    gallery[imageIndex-1].classList.add('active');
 }
 
 function addToCart() {
-    productsInCart += productCounterValue;
+    if (count > 0) {
+        productsInCart += count;
 
-    const productHTMLElement = `
-    <div class="item">
-        <img class="product-img" src="./images/image-product-1-thumbnail.jpg" alt="product 1 thumb">
-        <div class="details">
-            <div class="product-name">Autumn Limited Edition...</div>
-            <div class="price-group">
-                <div class="price">$${(price*discount).toFixed(2)}</div> x
-                <div class="count">${productsInCart}</div>
-                <div class="total-amount">$${(price*discount*productsInCart).toFixed(2)}</div>
+        const productHTMLElement = `
+        <div class="item">
+            <img class="product-img" src="./img/img-product-1-thumbnail.jpg" alt="product 1 thumb">
+            <div class="details">
+                <div class="product-name">Autumn Limited Edition...</div>
+                <div class="price-group">
+                    <div class="price">$${(price*discount).toFixed(2)}</div> x
+                    <div class="countbtn">${productsInCart}</div>
+                    <div class="total-amount">$${(price*discount*productsInCart).toFixed(2)}</div>
+                </div>
+            </div>
+            <img id="btnDelete" src="./img/icon-delete.svg" alt="icon delete">
         </div>
-        </div>
-        <img id="btnDelete" src="./images/icon-delete.svg" alt="icon delete">
-    </div>
-    `;
-
-    productInShoppingCart.innerHTML = productHTMLElement;
-
-    updateCart();
-
-    const btnDelete = document.querySelector('#btnDelete');
-    btnDelete.addEventListener('click', onBtnDeleteClick);
+        `;
+    
+        productInShoppingCart.innerHTML = productHTMLElement;
+    
+        updateCart();
+    
+        const btnDelete = document.querySelector('#btnDelete');
+        btnDelete.addEventListener('click', onBtnDeleteClick);
+    }
 }
 
 function updateCart() {
@@ -199,7 +200,7 @@ function onBtnDeleteClick() {
     productsInCart--;
     updateCart();
 
-    const el = document.querySelector('.count');
+    const el = document.querySelector('.countbtn');
     const totalAmount = document.querySelector('.total-amount');
     el.innerHTML = productsInCart;
     totalAmount.innerHTML = `$${(price*discount*productsInCart).toFixed(2)}`;
@@ -209,75 +210,25 @@ function onBtnDeleteClick() {
     }
 }
 
-function onHeroImgClick() {
-    if (window.innerWidth >= 1440) {
-        if (overlay.childElementCount == 1) {
-            const newNode = lightbox.cloneNode(true);
-            overlay.appendChild(newNode);
+let count = 0;
 
-            const btnOverlayClose = document.querySelector('#btnOverlayClose');
-            btnOverlayClose.addEventListener('click', onBtnOverlayClose);
+const btns = document.querySelectorAll('.btn');
+const num = document.getElementById('num');
 
-            lightboxGallery = overlay.querySelectorAll('.pic');
-            lightboxHero = overlay.querySelector('.product-hero');
-            lightboxGallery.forEach(img => {
-                img.addEventListener('click', onThumbClickLightbox);
-            });
-
-            const btnOverlayNext = overlay.querySelector('.next');
-            const btnOverlayPrevious = overlay.querySelector('.previous');
-            btnOverlayNext.addEventListener('click', handleBtnClickNextOverlay);
-            btnOverlayPrevious.addEventListener('click', handleBtnClickPreviousOverlay);
+btns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        const btnClass = e.currentTarget.classList;
+        if(btnClass.contains('minus')) {
+            if(count > 0){
+                count--
+            } else {
+                count = 0
+            }
+        } else if(btnClass.contains('plus')){
+            count++;
+        } else {
+            count = 0;
         }
-        overlay.classList.remove('hidden');
-    }
-}
-
-function onBtnOverlayClose() {
-    overlay.classList.add('hidden');
-}
-
-function onThumbClickLightbox(event) {
-    //clear active state for all thumbnails
-    lightboxGallery.forEach(img => {
-        img.classList.remove('active');
-    });
-    //set active thumbnail
-    event.target.parentElement.classList.add('active');
-    //update hero image
-    lightboxHero.src = event.target.src.replace('-thumbnail', '');
-}
-
-
-function handleBtnClickNextOverlay() {
-    let imageIndex = getOverlayCurrentImageIndex();
-    imageIndex++;
-    if (imageIndex > 4) {
-        imageIndex = 1;
-    }
-    setOverlayHeroImage(imageIndex);
-}
-
-function handleBtnClickPreviousOverlay() {
-    let imageIndex = getOverlayCurrentImageIndex();
-    imageIndex--;
-    if (imageIndex < 1) {
-        imageIndex = 4;
-    }
-    setOverlayHeroImage(imageIndex);
-}
-
-function getOverlayCurrentImageIndex() {
-    const imageIndex = parseInt(lightboxHero.src.split('\\').pop().split('/').pop().replace('.jpg', '').replace('image-product-', ''));
-    return imageIndex;
-}
-
-function setOverlayHeroImage(imageIndex) {
-    lightboxHero.src = `./images/image-product-${imageIndex}.jpg`;
-    //images are not sync
-    lightboxGallery.forEach(img => {
-        img.classList.remove('active');
-    });
-    //set active thumbnail
-    lightboxGallery[imageIndex-1].classList.add('active');
-}
+        num.textContent = count
+    })
+})

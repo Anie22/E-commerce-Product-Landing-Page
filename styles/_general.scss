@@ -1,13 +1,11 @@
-* {
-    margin: 0;
+@import url('https://fonts.google.com/specimen/Kumbh+Sans');
+
+*{
     padding: 0;
+    margin: 0;
     box-sizing: border-box;
 }
 
-html {
-    font-size: 62.5%;
-}
-
-body {
+body{
     font-family: 'Kumbh Sans', sans-serif;
 }

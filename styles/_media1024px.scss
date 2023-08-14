@@ -1,0 +1,31 @@
+@media screen and (max-width: 1024px) {
+    .header{
+
+        .header-content{
+
+            .cart{
+                margin-left: 261px;
+            }
+        }
+    }
+
+    .container{
+        gap: 70px;
+
+        .product{
+            width: 57%;
+    
+            .pg-btn-holder{
+                .count{
+                    padding: 9px;
+                    height: 45px;
+                }
+        
+                .add{
+                    width: 14em;
+                    height: 45px;
+                }
+            }
+        }
+    }
+}
